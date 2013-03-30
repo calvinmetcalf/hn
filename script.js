@@ -16,10 +16,12 @@ var Stories = Backbone.Collection.extend({
 var stories = new Stories();
 
 var Items = Backbone.View.extend({
-    initialize:function(){
-        this.collection.fetch();
-        this.collection.on("add",function(){this.render()},this);
+   initialize:function(){
+        var _this=this;
+        this.collection.fetch({success:function(){_this.render()}});
     },
+    start:0,
+    end:50,
     el:$("#mainStuff"),
     collection:stories,
     template:Mustache.compile("{{#items}}<div class='row-fluid'><div class='span4'><a href='{{link}}'>{{title}}</a></div><div class='span2'><a class='btn btn-small btn-primary'href='{{comments}}'>comments</a></div></div>{{/items}}"),
@@ -32,7 +34,7 @@ var items = new Items();
 var Togle = Backbone.View.extend({
      initialize:function(){
          this.render();
-        this.collection.on("add",function(){this.loading=false;this.render()},this);
+        this.collection.on("add",function(){if(this.loading){this.loading=false;this.render()}},this);
     },
     el:$("#refresh"),
     loading:true,
