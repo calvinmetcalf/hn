@@ -1,0 +1,1 @@
+a little reader for [hacker news](https://news.ycombinator.com/)
