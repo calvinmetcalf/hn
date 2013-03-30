@@ -1,4 +1,4 @@
-var link = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%3D'http%3A%2F%2Fnews.ycombinator.com%2Frss'&format=json";
+var link = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%3D'http%3A%2F%2Fnews.ycombinator.com%2Fbigrss'&format=json";
 var Story = Backbone.Model.extend({
     initialize:function(){
         var comments = this.get("comments");
